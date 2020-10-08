@@ -4,6 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     run: debug
+    app: gogs-app
   name: gogs-debug
 spec:
   containers:
