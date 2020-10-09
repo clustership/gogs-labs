@@ -1,0 +1,16 @@
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  name: gogs-app
+  namespace: gogs
+  labels:
+    app: gogs-app
+  annotations:
+    apps.open-cluster-management.io/github-path: resources/gogs
+spec:
+  channel: gogs/gogs-app-latest
+  placement:
+    placementRef:
+      kind: PlacementRule
+      name: front-clusters
