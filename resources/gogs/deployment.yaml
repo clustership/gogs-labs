@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gogs
+  name: gogs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gogs
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: gogs
+    spec:
+      containers:
+      - command: ["/bin/sh"]
+        args: ["-c", "sleep 10000"]
+        image: quay.io/xymox/ubi8-debug-toolkit
+        name: debug
+        resources: {}
+        volumeMounts:
+        - mountPath: /var/data
+          name: local-data
+      volumes:
+      - name: local-data
+        persistentVolumeClaim:
+          claimName: pod-claim
+status: {}
